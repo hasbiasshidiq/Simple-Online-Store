@@ -35,13 +35,15 @@ Still on api-testing directory, you can run api testing by following these recom
 return list of inventory description, you can filter it by sellerID and Category. In this scenario we set parameter value as described below
 
 ---
+**Description**
+```
 * HTTP GET request "http://127.0.0.1:8888/view-inventory"
 * Params Value:
 
     seller_id=barokah_store
     category=herbal
+```
 ---
-
 
 ```
 $ docker run --rm -it --net=host -v `pwd`/:/code -w /code testing-api:latest python3 1_view_inventory.py
@@ -55,9 +57,8 @@ $ python3 1_view_inventory.py
 Update inventory Quantity by sellerID and productID
 
 ---
-```
 **Description**
-
+```
 * HTTP PUT "http://127.0.0.1:8888/update-inventory"
 * Payload
 {
@@ -80,6 +81,9 @@ $ python3 2_update_inventory.py
 ### 3. Checkout Order
 Customer checkout some products from a particular seller
 
+---
+**Description**
+```
 - HTTP POST
 - Payload
 {
@@ -102,6 +106,9 @@ Customer checkout some products from a particular seller
     ]
 }
 ```
+---
+
+```
 $ docker run --rm -it --net=host -v `pwd`/:/code -w /code testing-api:latest python3 3_checkout_order.py
 ```
 or
@@ -111,6 +118,10 @@ $ python3 3_checkout_order.py
 
 ### 4. Checkout Order Concurrent
 Make two concurrent order request with 4 items of flexamove(product name), but before that we need to make a request as in step 2 so Flexamove quantity in inventory is set to 5 
+
+---
+**Description**
+```
 - HTTP POST
 - 2X Payload 
 {
@@ -126,6 +137,9 @@ Make two concurrent order request with 4 items of flexamove(product name), but b
         }   
     ]
 }
+```
+---
+
 ```
 $ docker run --rm -it --net=host -v `pwd`/:/code -w /code testing-api:latest python3 4_checkout_order_concurrent.py
 ```
@@ -148,6 +162,8 @@ then check Flexamove quantity in inventory by doing step 1. Isn't it -3?
 Make two concurrent order request with 4 items of flexamove(product name), but before that we need to make a request as in step 2 so Flexamove quantity in inventory is set to 5 
 
 ---
+**Description**
+```
 - HTTP POST
 - 2X Payload 
 {
@@ -163,6 +179,7 @@ Make two concurrent order request with 4 items of flexamove(product name), but b
         }   
     ]
 }
+```
 ---
 
 ```
