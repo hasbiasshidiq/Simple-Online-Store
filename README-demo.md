@@ -1,4 +1,14 @@
 # HOW TO USE
+Clone the repository
+```
+$ git clone https://github.com/hasbiasshidiq/Simple-Online-Store
+```
+move to working directory
+```
+$ cd Simple-Online-Store
+```
+
+MakeFile command for build, run, and stop application
 ```
 # build store api app image
 $ make build-appImage
