@@ -1,0 +1,22 @@
+{
+    "inventory": [
+        {
+            "category": "herbal",
+            "price": "120000",
+            "product_id": "3",
+            "product_name": "Flexamove",
+            "quantity": "5",
+            "seller_id": "barokah_store",
+            "seller_name": "Barokah Store"
+        },
+        {
+            "category": "herbal",
+            "price": "200000",
+            "product_id": "4",
+            "product_name": "Antapro Barata",
+            "quantity": "75",
+            "seller_id": "barokah_store",
+            "seller_name": "Barokah Store"
+        }
+    ]
+}
