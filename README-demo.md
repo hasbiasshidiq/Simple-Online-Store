@@ -161,7 +161,6 @@ then check Flexamove quantity in inventory by doing step 1. Isn't it -3?
 ### 5. Checkout Order Concurrent with Row Locking
 Make two concurrent order request with 4 items of flexamove(product name), but before that we need to make a request as in step 2 so Flexamove quantity in inventory is set to 5 
 
----
 **Description**
 ```
 - HTTP POST
@@ -180,7 +179,6 @@ Make two concurrent order request with 4 items of flexamove(product name), but b
     ]
 }
 ```
----
 
 ```
 $ docker run --rm -it --net=host -v `pwd`/:/code -w /code testing-api:latest python3 5_checkout_order_concurrent_withLock.py
