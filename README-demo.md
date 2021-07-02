@@ -55,11 +55,11 @@ $ python3 1_view_inventory.py
 Update inventory Quantity by sellerID and productID
 
 ---
-**NOTE**
+```
+**Description**
 
 * HTTP PUT "http://127.0.0.1:8888/update-inventory"
 * Payload
-```
 {
     "seller_id": "barokah_store",
     "product_id": 3,
