@@ -31,7 +31,7 @@ $ docker ps
 
 Still on api-testing directory, you can run api testing by following these recommended steps. You can also change parameter value or payload defined in python scripts
 
-1. View Inventory
+### 1. View Inventory
 return list of inventory description, you can filter it by sellerID and Category. In this scenario we set parameter value as described below
 
 ---
@@ -51,18 +51,22 @@ or
 $ python3 1_view_inventory.py
 ```
 
-2. Update Inventory
-Update inventory Quantity by selledID and producID
+### 2. Update Inventory
+Update inventory Quantity by sellerID and productID
 
 ---
+**NOTE**
+
 * HTTP PUT "http://127.0.0.1:8888/update-inventory"
 * Payload
+```
 {
     "seller_id": "barokah_store",
     "product_id": 3,
     "product_name": "Flexamove",
     "quantity": 5
 }
+```
 ---
 
 ```
@@ -73,7 +77,7 @@ or
 $ python3 2_update_inventory.py
 ```
 
-3. Checkout Order
+### 3. Checkout Order
 Customer checkout some products from a particular seller
 
 - HTTP POST
@@ -105,7 +109,7 @@ or
 $ python3 3_checkout_order.py
 ```
 
-4. Checkout Order Concurrent
+### 4. Checkout Order Concurrent
 Make two concurrent order request with 4 items of flexamove(product name), but before that we need to make a request as in step 2 so Flexamove quantity in inventory is set to 5 
 - HTTP POST
 - 2X Payload 
@@ -140,7 +144,7 @@ Success
 
 then check Flexamove quantity in inventory by doing step 1. Isn't it -3?
 
-5. Checkout Order Concurrent with Row Locking
+### 5. Checkout Order Concurrent with Row Locking
 Make two concurrent order request with 4 items of flexamove(product name), but before that we need to make a request as in step 2 so Flexamove quantity in inventory is set to 5 
 
 ---
