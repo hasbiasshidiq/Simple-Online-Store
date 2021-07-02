@@ -36,8 +36,8 @@ return list of inventory description, you can filter it by sellerID and Category
 
 **Description**
 ```
-* HTTP GET request "http://127.0.0.1:8888/view-inventory"
-* Params Value:
+- HTTP GET request "http://127.0.0.1:8888/view-inventory"
+- Params Value:
 
     seller_id=barokah_store
     category=herbal
@@ -79,8 +79,8 @@ Update inventory Quantity by sellerID and productID
 
 **Description**
 ```
-* HTTP PUT "http://127.0.0.1:8888/update-inventory"
-* Payload
+- HTTP PUT "http://127.0.0.1:8888/update-inventory"
+- Payload
 {
     "seller_id": "barokah_store",
     "product_id": 3,
@@ -104,7 +104,7 @@ Customer checkout some products from a particular seller
 
 **Description**
 ```
-- HTTP POST
+- HTTP POST "http://127.0.0.1:8888/checkout-order"
 - Payload
 {
     "seller_id":"barokah_store",
@@ -153,7 +153,7 @@ Make two concurrent order request with 4 items of flexamove(product name), but b
 
 **Description**
 ```
-- HTTP POST
+- HTTP POST "http://localhost:8888/checkout-order"
 - 2X Payload 
 {
     "seller_id":"barokah_store",
@@ -194,7 +194,7 @@ Make two concurrent order request with 4 items of flexamove(product name), but b
 
 **Description**
 ```
-- HTTP POST
+- HTTP POST "http://localhost:8888/checkout-order-withLock"
 - 2X Payload 
 {
     "seller_id":"barokah_store",
