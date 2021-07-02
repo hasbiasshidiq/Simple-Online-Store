@@ -22,4 +22,4 @@ Associated row will be locked until process A finishes doing transactions marked
 
 
 ## How to use the application
-For how to use the application, you can refer documentation here [a link](https://github.com/hasbiasshidiq/Simple-Online-Store/blob/main/README-demo.md)
+For how to use the application, you can refer documentation [here](https://github.com/hasbiasshidiq/Simple-Online-Store/blob/main/README-demo.md)

@@ -34,7 +34,6 @@ Still on api-testing directory, you can run api testing by following these recom
 ### 1. View Inventory
 return list of inventory description, you can filter it by sellerID and Category. In this scenario we set parameter value as described below
 
----
 **Description**
 ```
 * HTTP GET request "http://127.0.0.1:8888/view-inventory"
@@ -43,20 +42,41 @@ return list of inventory description, you can filter it by sellerID and Category
     seller_id=barokah_store
     category=herbal
 ```
----
 
+**Command**
 ```
 $ docker run --rm -it --net=host -v `pwd`/:/code -w /code testing-api:latest python3 1_view_inventory.py
 ```
-or
+
+**Output**
 ```
-$ python3 1_view_inventory.py
+{
+    "inventory": [
+        {
+            "category": "herbal",
+            "price": "120000",
+            "product_id": "3",
+            "product_name": "Flexamove",
+            "quantity": "5",
+            "seller_id": "barokah_store",
+            "seller_name": "Barokah Store"
+        },
+        {
+            "category": "herbal",
+            "price": "200000",
+            "product_id": "4",
+            "product_name": "Antapro Barata",
+            "quantity": "75",
+            "seller_id": "barokah_store",
+            "seller_name": "Barokah Store"
+        }
+    ]
+}
 ```
 
 ### 2. Update Inventory
 Update inventory Quantity by sellerID and productID
 
----
 **Description**
 ```
 * HTTP PUT "http://127.0.0.1:8888/update-inventory"
@@ -68,20 +88,20 @@ Update inventory Quantity by sellerID and productID
     "quantity": 5
 }
 ```
----
 
+**Command**
 ```
 $ docker run --rm -it --net=host -v `pwd`/:/code -w /code testing-api:latest python3 2_update_inventory.py
 ```
-or
+
+**Output**
 ```
-$ python3 2_update_inventory.py
+Success
 ```
 
 ### 3. Checkout Order
 Customer checkout some products from a particular seller
 
----
 **Description**
 ```
 - HTTP POST
@@ -106,20 +126,31 @@ Customer checkout some products from a particular seller
     ]
 }
 ```
----
 
+**Command**
 ```
 $ docker run --rm -it --net=host -v `pwd`/:/code -w /code testing-api:latest python3 3_checkout_order.py
 ```
-or
+
+**Output**
 ```
-$ python3 3_checkout_order.py
+{
+    "failed_order_items": [
+        {
+            "order_id": 1,
+            "order_item_id": 0,
+            "product_id": 4,
+            "product_name": "Antapro Barata",
+            "quantity": 100,
+            "total_price": 75000
+        }
+    ]
+}
 ```
 
 ### 4. Checkout Order Concurrent
 Make two concurrent order request with 4 items of flexamove(product name), but before that we need to make a request as in step 2 so Flexamove quantity in inventory is set to 5 
 
----
 **Description**
 ```
 - HTTP POST
@@ -138,17 +169,17 @@ Make two concurrent order request with 4 items of flexamove(product name), but b
     ]
 }
 ```
----
 
+**Command**
+```
+$ docker run --rm -it --net=host -v `pwd`/:/code -w /code testing-api:latest python3 2_update_inventory.py
+```
+and then
 ```
 $ docker run --rm -it --net=host -v `pwd`/:/code -w /code testing-api:latest python3 4_checkout_order_concurrent.py
 ```
-or
-```
-$ python3 4_checkout_order_concurrent.py
-```
 
-the output should be like this:
+**Output**
 ```
 <Response [202]>
 Success
@@ -156,7 +187,7 @@ Success
 Success
 ```
 
-then check Flexamove quantity in inventory by doing step 1. Isn't it -3?
+then check Flexamove quantity in inventory by doing step 1. Isn't it to be -3?
 
 ### 5. Checkout Order Concurrent with Row Locking
 Make two concurrent order request with 4 items of flexamove(product name), but before that we need to make a request as in step 2 so Flexamove quantity in inventory is set to 5 
@@ -180,15 +211,16 @@ Make two concurrent order request with 4 items of flexamove(product name), but b
 }
 ```
 
+**Command**
+```
+$ docker run --rm -it --net=host -v `pwd`/:/code -w /code testing-api:latest python3 2_update_inventory.py
+```
+and then
 ```
 $ docker run --rm -it --net=host -v `pwd`/:/code -w /code testing-api:latest python3 5_checkout_order_concurrent_withLock.py
 ```
-or
-```
-$ python3 5_checkout_order_concurrent_withLock.py
-```
 
-the output should be like this:
+**Output**
 ```
 <Response [202]>
 Success
@@ -196,4 +228,4 @@ Success
 {"failed_order_items":[{"order_item_id":0,"order_id":415,"product_id":3,"product_name":"Flexamove","quantity":4,"total_price":10000}]}
 ```
 
-then check Flexamove quantity in inventory by doing step 1. Isn't it 1?
+then check Flexamove quantity in inventory by doing step 1. Isn't it to be 1?
