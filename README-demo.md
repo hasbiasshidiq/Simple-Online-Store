@@ -23,7 +23,7 @@ Our api testing scripts is written in python3. So if your working environment is
 $ cd api-testing && build -t testing-api .
 ```
 
-Don't forget to make sure if application and postgresql container running properly. 
+Don't forget to make sure if application and postgresql container running properly (as a result of executing `make run` command in line 7). 
 
 ```
 $ docker ps
