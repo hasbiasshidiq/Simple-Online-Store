@@ -1,5 +1,5 @@
-# HOW TO USE
-Clone the repository
+# HOW TO RUN
+Clone this repository
 ```
 $ git clone https://github.com/hasbiasshidiq/Simple-Online-Store
 ```
@@ -8,7 +8,7 @@ move to working directory
 $ cd Simple-Online-Store
 ```
 
-MakeFile command for build, run, and stop application
+Build, run, and stop application
 ```
 # build store api app image
 $ make build-appImage
@@ -21,19 +21,19 @@ $ make stop
 ```
 
 ## Overview ERD DESIGN
-This is database schemes of our simple online store
+Database schemes of simple online store
 ![alt text](https://github.com/hasbiasshidiq/Simple-Online-Store/blob/main/images/ERD.png)
 
 
 ## API Testing
 
-Our api testing scripts is written in python3. So if your working environment is not compatible and you are looking for neat implementation, you can build your python testing environment with docker as explained below :
+This api testing scripts are all written in python3. So if your working environment is not compatible and you are looking for proper implementation, you can build your python testing environment with docker as explained below :
 
 ```
 $ cd api-testing && build -t testing-api .
 ```
 
-Don't forget to make sure if application and postgresql container running properly (as a result of executing `make run` command in line 7). 
+Don't forget to make sure if the application and postgresql container running properly (as a result of executing `make run` command in line 7). 
 
 ```
 $ docker ps
@@ -42,7 +42,7 @@ $ docker ps
 Still on api-testing directory, you can run api testing by following these recommended steps. You can also change parameter value or payload defined in python scripts
 
 ### 1. View Inventory
-return list of inventory description, you can filter it by sellerID and Category. In this scenario we set parameter value as described below
+return list of inventory description, you can filter these by sellerID and Category. In this scenario, parameter values are described below
 
 **Description**
 ```
