@@ -1,4 +1,4 @@
-# SIMPLE ONLINE STORE - Race Condition Demo
+# Simple Online Store - Race Condition Demo
 
 ## Overview
 This repo demonstrate simulation of race conditions on simple online store. We also include proof of concept of this occurrence and its solution.
